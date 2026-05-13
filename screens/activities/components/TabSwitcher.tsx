@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   container: {
     gap: 16,
     flexDirection: 'row',
+    marginTop: -42,
   },
   button: {
     backgroundColor: '#fff',
