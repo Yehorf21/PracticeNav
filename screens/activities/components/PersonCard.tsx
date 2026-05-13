@@ -58,15 +58,15 @@ export const PersonCard: React.FC<Props> = ({ person }) => {
 
         <View style={styles.bottomContainer}>
           <View style={styles.bottomGroup}>
-            <MatchIcon height={24} width={24} />
+            <MatchIcon height={18} width={18} />
 
-            <Text>{person.matchPercentage}%</Text>
+            <Text style={styles.text}>{person.matchPercentage}%</Text>
           </View>
 
           <View style={styles.bottomGroup}>
-            <DistanceIcon height={24} width={24} />
+            <DistanceIcon height={18} width={18} />
 
-            <Text>{person.distance}km</Text>
+            <Text style={styles.text}>{person.distance}km</Text>
           </View>
         </View>
       </View>
@@ -78,6 +78,7 @@ export const styles = StyleSheet.create({
   container: {
     gap: 8,
     flex: 1,
+    paddingBottom: 8,
   },
   like: {
     position: 'absolute',
@@ -94,12 +95,12 @@ export const styles = StyleSheet.create({
   },
   selectedProfile: {
     borderColor: 'purple',
-    borderRadius: 20,
+    borderRadius: 24,
   },
   image: {
     height: 250,
     width: '100%',
-    borderRadius: 20,
+    borderRadius: 18,
     overflow: 'hidden',
     objectFit: 'contain',
   },
@@ -134,12 +135,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
   },
-  icon: {
-    height: 24,
-    width: 24,
-  },
   text: {
     color: '#090617',
-    fontSize: 16,
+    fontSize: 12,
   },
 });
