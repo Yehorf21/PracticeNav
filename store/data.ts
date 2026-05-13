@@ -1,0 +1,58 @@
+import { PersonCard } from "../types/people";
+
+export const PEOPLE_LIST: PersonCard[] = [
+  {
+    id: '1',
+    name: 'Max',
+    age: 25,
+    isLiked: false,
+    isOnline: true,
+    matchPercentage: 75,
+    distance: 10.5,
+  },
+  {
+    id: '2',
+    name: 'Natalie',
+    age: 27,
+    isLiked: false,
+    isOnline: true,
+    matchPercentage: 63,
+    distance: 5,
+  },
+  {
+    id: '3',
+    name: 'Peter',
+    age: 33,
+    isLiked: false,
+    isOnline: true,
+    matchPercentage: 37,
+    distance: 19,
+  },
+  {
+    id: '4',
+    name: 'Lisa',
+    age: 30,
+    isLiked: false,
+    isOnline: true,
+    matchPercentage: 90,
+    distance: 10,
+  },
+  {
+    id: '5',
+    name: 'Clint',
+    age: 22,
+    isLiked: false,
+    isOnline: true,
+    matchPercentage: 65,
+    distance: 10.5,
+  },
+  {
+    id: '6',
+    name: 'Star',
+    age: 29,
+    isLiked: false,
+    isOnline: true,
+    matchPercentage: 89,
+    distance: 2,
+  },
+]
