@@ -4,7 +4,7 @@ import { PeopleList } from './components/PeopleList';
 
 export const ActivitiesScreen = () => {
   return (
-    <SafeAreaView style={{ gap: 24 }}>
+    <SafeAreaView style={{ gap: 24, backgroundColor: '#fff', paddingHorizontal: 12 }}>
       <TabSwitcher />
 
       <PeopleList />

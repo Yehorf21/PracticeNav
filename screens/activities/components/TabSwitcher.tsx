@@ -7,30 +7,22 @@ export const TabSwitcher = () => {
   const { people } = usePeopleListStore();
   const [activeTab, setActiveTab] = useState<'Received' | 'Mutual'>('Mutual');
 
-  const handleActiveTab = () => {
-    setActiveTab(prev => (prev === 'Mutual' ? 'Received' : 'Mutual'));
-  };
-
   return (
     <View style={styles.container}>
       {['Received', 'Mutual'].map(tab => (
-        <LinearGradient colors={['#0015ff', '#1c005d']}>
-          <Pressable
-            key={tab}
-            style={[styles.button, activeTab === tab && styles.activeButton]}
-            onPress={handleActiveTab}
-          >
-            <Text style={[styles.text, activeTab === tab && styles.activeText]}>
-              {tab}
-            </Text>
+        <Pressable
+          key={tab}
+          style={[styles.button, activeTab === tab && styles.activeButton]}
+          onPress={() => setActiveTab(tab)}
+        >
+          <Text style={[styles.text, activeTab === tab && styles.activeText]}>
+            {tab}
+          </Text>
 
-            <Text
-              style={[styles.number, activeTab === tab && styles.activeText]}
-            >
-              {people.length}
-            </Text>
-          </Pressable>
-        </LinearGradient>
+          <Text style={[styles.number, activeTab === tab && styles.activeText]}>
+            {people.length}
+          </Text>
+        </Pressable>
       ))}
     </View>
   );
@@ -39,15 +31,20 @@ export const TabSwitcher = () => {
 const styles = StyleSheet.create({
   container: {
     gap: 16,
+    flexDirection: 'row',
   },
   button: {
     backgroundColor: '#fff',
+    flexDirection: 'row',
+    gap: 4,
+    padding: 12,
+    borderRadius: 12,
   },
   activeButton: {
-    backgroundColor: 'purple',
+    backgroundColor: '#3933ad',
   },
   text: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#090617',
     fontWeight: '600',
     opacity: 0.7,
@@ -57,7 +54,7 @@ const styles = StyleSheet.create({
     opacity: 1,
   },
   number: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#090617',
     opacity: 0.7,
   },

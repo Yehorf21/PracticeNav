@@ -1,8 +1,8 @@
-import { ActivitiesScreen } from '../screens/Activities';
-import { ChatScreen } from '../screens/Chat';
-import { BrowseScreen } from '../screens/Browse';
-import { EncountersScreen } from '../screens/Encounters';
-import { ProfileScreen } from '../screens/Profile';
+import { ActivitiesScreen } from '../screens/activities/index.tsx';
+import { BrowseScreen } from '../screens/browse/index.tsx';
+import { EncountersScreen } from '../screens/encounters/index.tsx';
+import { ProfileScreen } from '../screens/profile/index.tsx';
+import { ChatScreen } from '../screens/chat/index.tsx';
 
 // SVG's
 

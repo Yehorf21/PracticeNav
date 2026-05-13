@@ -12,62 +12,72 @@ interface Props {
   person: PersonCardType;
 }
 
+const images = {
+  1: require('../../../assets/1.webp'),
+  2: require('../../../assets/2.webp'),
+  3: require('../../../assets/3.webp'),
+  4: require('../../../assets/4.webp'),
+  5: require('../../../assets/5.webp'),
+  6: require('../../../assets/6.webp'),
+};
+
 export const PersonCard: React.FC<Props> = ({ person }) => {
+  // can implement visual change of the like button as well if needed
   const { updateLikedPerson } = usePeopleListStore();
   const [isSelected, setIsSelected] = useState(false);
 
   return (
-    <View style={styles.container}>
-      {/* like */}
-      <Pressable
-        style={styles.like}
-        onPress={() => updateLikedPerson(person.id)}
-      >
-        <LikeIcon />
-      </Pressable>
+    <Pressable
+      onPressIn={() => setIsSelected(true)}
+      onPressOut={() => setIsSelected(false)}
+      style={[styles.profile, isSelected && styles.selectedProfile]}
+    >
+      <View style={styles.container}>
+        {/* like */}
+        <Pressable
+          style={styles.like}
+          onPress={() => updateLikedPerson(person.id)}
+        >
+          <LikeIcon
+            height={14}
+            width={14}
+            fill={person.isLiked ? '#ff5f5f' : '#fff'}
+          />
+        </Pressable>
 
-      <Pressable
-        onPressIn={() => setIsSelected(true)}
-        onPressOut={() => setIsSelected(false)}
-        style={isSelected && styles.selectedProfile}
-      >
-        <Image
-          width={130}
-          height={250}
-          src={`../../../assets/${person.id}.webp`}
-          style={styles.image}
-        />
-      </Pressable>
+        <Image source={images[person.id]} style={styles.image} />
 
-      <View style={styles.nameContainer}>
-        <Text style={styles.name}>
-          {person.name}, {person.age}
-        </Text>
+        <View style={styles.nameContainer}>
+          <Text style={styles.name}>
+            {person.name}, {person.age}
+          </Text>
 
-        {/* green dot */}
-        <View style={styles.dot} />
-      </View>
-
-      <View style={styles.bottomContainer}>
-        <View style={styles.bottomGroup}>
-          <MatchIcon />
-
-          <Text>{person.matchPercentage}%</Text>
+          {/* green dot */}
+          <View style={styles.dot} />
         </View>
 
-        <View style={styles.bottomGroup}>
-          <DistanceIcon />
+        <View style={styles.bottomContainer}>
+          <View style={styles.bottomGroup}>
+            <MatchIcon height={24} width={24} />
 
-          <Text>{person.distance}km</Text>
+            <Text>{person.matchPercentage}%</Text>
+          </View>
+
+          <View style={styles.bottomGroup}>
+            <DistanceIcon height={24} width={24} />
+
+            <Text>{person.distance}km</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 export const styles = StyleSheet.create({
   container: {
     gap: 8,
+    flex: 1,
   },
   like: {
     position: 'absolute',
@@ -78,13 +88,20 @@ export const styles = StyleSheet.create({
     padding: 12,
     zIndex: 10,
   },
-  selectedProfile: {
+  profile: {
     borderWidth: 3,
+    borderColor: '#fff',
+  },
+  selectedProfile: {
     borderColor: 'purple',
+    borderRadius: 20,
   },
   image: {
+    height: 250,
+    width: '100%',
     borderRadius: 20,
     overflow: 'hidden',
+    objectFit: 'contain',
   },
   nameContainer: {
     paddingHorizontal: 12,
@@ -112,7 +129,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 2,
     alignItems: 'center',
-    backgroundColor: '#d4d4d4',
+    backgroundColor: '#f4f4f4',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
   },
   icon: {
     height: 24,

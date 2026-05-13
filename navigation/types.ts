@@ -7,6 +7,7 @@ export type RootStackParamList = {
   Browse: undefined;
   Encounters: undefined;
   Profile: undefined;
+  MainTabs: undefined;
 };
 
 export interface Tabs {
